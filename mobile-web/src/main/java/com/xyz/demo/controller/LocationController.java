@@ -24,6 +24,7 @@ import java.util.Properties;
 
 @RestController
 @RequestMapping("location")
+@Api("位置信息处理")
 public class LocationController {
 
     private static Logger log = LoggerFactory.getLogger(LocationController.class);

@@ -171,9 +171,6 @@ values (
 <update id="update" parameterType="com.xyz.demo.pojo.User">
 	update t_user
 	<set>
-				<if test="id != null">
-					id = #{id},
-				</if>
 				<if test="mobile != null and mobile != '' ">
 					mobile = #{mobile},
 				</if>
@@ -229,7 +226,7 @@ values (
 			token = #{token},
 		</if>
 	</set>
-	<include refid="Base_where"/>
+	where id = #{id}
 </update>
 
 <update id="delete">
