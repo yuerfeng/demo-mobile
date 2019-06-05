@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyz.demo.dao.UserLocationDao">
+<resultMap id="BaseResultMap" type="com.xyz.demo.pojo.UserLocation" >
+			<id column="id" property="id" jdbcType="INTEGER" />
+			<result column="user_id" property="userId" jdbcType="INTEGER" />
+			<result column="lat" property="lat" jdbcType="VARCHAR" />
+			<result column="lng" property="lng" jdbcType="VARCHAR" />
+			<result column="create_time" property="createTime" jdbcType="DATE" />
+			<result column="update_time" property="updateTime" jdbcType="DATE" />
+			<result column="del_flag" property="delFlag" jdbcType="VARCHAR" />
+</resultMap>
+<sql id="Base_Column_List" >
+			id,
+			user_id,
+			lat,
+			lng,
+			create_time,
+			update_time,
+			del_flag
+</sql>
+<sql id="Base_where" >
+	<where>
+                <if test="id != null">
+                    and id = #{id}
+                </if>
+                <if test="userId != null">
+                    and user_id = #{userId}
+                </if>
+				<if test="lat != null and lat != '' ">
+					and lat = #{lat}
+				</if>
+				<if test="lng != null and lng != '' ">
+					and lng = #{lng}
+				</if>
+                <if test="createTime != null">
+                    and create_time = #{createTime}
+                </if>
+                <if test="updateTime != null">
+                    and update_time = #{updateTime}
+                </if>
+				<if test="delFlag != null and delFlag != '' ">
+					and del_flag = #{delFlag}
+				</if>
+	</where>
+</sql>
+<select id="get" resultType="com.xyz.demo.pojo.UserLocation" >
+	select		<include refid="Base_Column_List" />
+	from t_user_location
+	where id = #{id}
+</select>
+
+	<select id="findLatested" resultType="com.xyz.demo.pojo.UserLocation" >
+		select		<include refid="Base_Column_List" />
+		from t_user_location
+		where user_id = #{userId}
+		order by create_time desc
+		limit 1
+	</select>
+
+<select id="getByEntity" resultType="com.xyz.demo.pojo.UserLocation" >
+	select		<include refid="Base_Column_List" />
+	from t_user_location
+	<include refid="Base_where"/>
+</select>
+
+<select id="findList" resultType="com.xyz.demo.pojo.UserLocation" >
+	select		<include refid="Base_Column_List" />
+	from t_user_location
+	<include refid="Base_where"/>
+</select>
+
+<insert id="insert" parameterType="com.xyz.demo.pojo.UserLocation">
+	insert into t_user_location
+	(
+            id,
+            user_id,
+            lat,
+            lng,
+            create_time,
+            update_time,
+            del_flag
+)
+values (
+			#{id},
+			#{userId},
+			#{lat},
+			#{lng},
+			#{createTime},
+			#{updateTime},
+			#{delFlag}
+	)
+</insert>
+
+<update id="update" parameterType="com.xyz.demo.pojo.UserLocation">
+	update t_user_location
+	<set>
+				<if test="id != null">
+					id = #{id},
+				</if>
+				<if test="userId != null">
+					user_id = #{userId},
+				</if>
+				<if test="lat != null and lat != '' ">
+					lat = #{lat},
+				</if>
+				<if test="lng != null and lng != '' ">
+					lng = #{lng},
+				</if>
+				<if test="createTime != null">
+					create_time = #{createTime},
+				</if>
+				<if test="updateTime != null">
+					update_time = #{updateTime},
+				</if>
+				<if test="delFlag != null and delFlag != '' ">
+					del_flag = #{delFlag},
+				</if>
+	</set>
+	<include refid="Base_where"/>
+</update>
+
+<update id="delete">
+	update t_user_location
+	set del_flag = '1' where id = #{id}
+</update>
+
+</mapper>

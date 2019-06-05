@@ -1,4 +1,4 @@
-package com.xyz.demo.socket.model;
+package com.xyz.demo.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

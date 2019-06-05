@@ -1,32 +1,28 @@
 package com.xyz.demo.pojo;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 @Data
-@ApiModel("用户信息")
-public class User implements Serializable,Cloneable {
-    @ApiModelProperty("用户名")
-    private String name;
-    @ApiModelProperty("密码")
-    private String pass;
-    @ApiModelProperty("用户id")
-    private String id;
-    @ApiModelProperty("用户的朋友")
-    private List<User> friends;
+public class User extends DataEntity implements Serializable{
+        private String mobile;
+        private String password;
+        private String deviceToken;
+        private Integer type;
+        private String name;
+        private String nickName;
+        private String age;
+        private Date birthday;
+        private String sex;
+        private String avatar;
+        private String email;
+        private String zhCn;
+        private String pushToken;
+        private String loginStatus;
+        private String token;
 
-    public User(String id,String name,String pass){
-        this.id = id;
-        this.name = name;
-        this.pass = pass;
-    }
-
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
+        private List<Friend> friendList = new LinkedList<>();
 }

@@ -1,4 +1,4 @@
-package com.xyz.demo.swagger;
+package com.xyz.demo.config.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ public class SwaggerConfig {
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com"))
+                .apis(RequestHandlerSelectors.basePackage("com.xyz.demo.controller"))
                 .paths(PathSelectors.any()).build();
     }
 

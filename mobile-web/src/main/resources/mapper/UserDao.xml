@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyz.demo.dao.UserDao">
+<resultMap id="BaseResultMap" type="com.xyz.demo.pojo.User" >
+			<id column="id" property="id" jdbcType="INTEGER" />
+			<result column="mobile" property="mobile" jdbcType="VARCHAR" />
+			<result column="password" property="password" jdbcType="VARCHAR" />
+			<result column="device_token" property="deviceToken" jdbcType="VARCHAR" />
+			<result column="type" property="type" jdbcType="INTEGER" />
+			<result column="name" property="name" jdbcType="VARCHAR" />
+			<result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+			<result column="age" property="age" jdbcType="VARCHAR" />
+			<result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+			<result column="sex" property="sex" jdbcType="VARCHAR" />
+			<result column="avatar" property="avatar" jdbcType="VARCHAR" />
+			<result column="email" property="email" jdbcType="VARCHAR" />
+			<result column="zh_cn" property="zhCn" jdbcType="VARCHAR" />
+			<result column="push_token" property="pushToken" jdbcType="VARCHAR" />
+			<result column="create_time" property="createTime" jdbcType="DATE" />
+			<result column="update_time" property="updateTime" jdbcType="DATE" />
+			<result column="del_flag" property="delFlag" jdbcType="VARCHAR" />
+	<result column="login_status" property="loginStatus" jdbcType="VARCHAR" />
+	<result column="token" property="token" jdbcType="VARCHAR" />
+</resultMap>
+<sql id="Base_Column_List" >
+			id,
+			mobile,
+			password,
+			device_token,
+			type,
+			name,
+			nick_name,
+			age,
+			birthday,
+			sex,
+			avatar,
+			email,
+			zh_cn,
+			push_token,
+			create_time,
+			update_time,
+			del_flag,
+			login_status,
+			token
+</sql>
+<sql id="Base_where" >
+	<where>
+                <if test="id != null">
+                    and id = #{id}
+                </if>
+				<if test="mobile != null and mobile != '' ">
+					and mobile = #{mobile}
+				</if>
+				<if test="password != null and password != '' ">
+					and password = #{password}
+				</if>
+				<if test="deviceToken != null and deviceToken != '' ">
+					and device_token = #{deviceToken}
+				</if>
+                <if test="type != null">
+                    and type = #{type}
+                </if>
+				<if test="name != null and name != '' ">
+					and name = #{name}
+				</if>
+				<if test="nickName != null and nickName != '' ">
+					and nick_name = #{nickName}
+				</if>
+				<if test="age != null and age != '' ">
+					and age = #{age}
+				</if>
+                <if test="birthday != null">
+                    and birthday = #{birthday}
+                </if>
+				<if test="sex != null and sex != '' ">
+					and sex = #{sex}
+				</if>
+				<if test="avatar != null and avatar != '' ">
+					and avatar = #{avatar}
+				</if>
+				<if test="email != null and email != '' ">
+					and email = #{email}
+				</if>
+				<if test="zhCn != null and zhCn != '' ">
+					and zh_cn = #{zhCn}
+				</if>
+				<if test="pushToken != null and pushToken != '' ">
+					and push_token = #{pushToken}
+				</if>
+                <if test="createTime != null">
+                    and create_time = #{createTime}
+                </if>
+                <if test="updateTime != null">
+                    and update_time = #{updateTime}
+                </if>
+				<if test="delFlag != null and delFlag != '' ">
+					and del_flag = #{delFlag}
+				</if>
+		<if test="loginStatus != null and loginStatus != '' ">
+			and login_status = #{loginStatus}
+		</if>
+		<if test="token != null and token != '' ">
+			and token = #{token}
+		</if>
+	</where>
+</sql>
+<select id="get" resultType="com.xyz.demo.pojo.User" >
+	select		<include refid="Base_Column_List" />
+	from t_user
+	where id = #{id}
+</select>
+
+<select id="getByEntity" resultType="com.xyz.demo.pojo.User" >
+	select		<include refid="Base_Column_List" />
+	from t_user
+	<include refid="Base_where"/>
+</select>
+
+<select id="findList" resultType="com.xyz.demo.pojo.User" >
+	select		<include refid="Base_Column_List" />
+	from t_user
+	<include refid="Base_where"/>
+</select>
+
+<insert id="insert" parameterType="com.xyz.demo.pojo.User">
+	insert into t_user
+	(
+            id,
+            mobile,
+            password,
+            device_token,
+            type,
+            name,
+            nick_name,
+            age,
+            birthday,
+            sex,
+            avatar,
+            email,
+            zh_cn,
+            push_token,
+            create_time,
+            update_time,
+            del_flag,
+            login_status,
+            token
+)
+values (
+			#{id},
+			#{mobile},
+			#{password},
+			#{deviceToken},
+			#{type},
+			#{name},
+			#{nickName},
+			#{age},
+			#{birthday},
+			#{sex},
+			#{avatar},
+			#{email},
+			#{zhCn},
+			#{pushToken},
+			#{createTime},
+			#{updateTime},
+			#{delFlag},
+			#{loginStatus},
+			#{token}
+	)
+</insert>
+
+<update id="update" parameterType="com.xyz.demo.pojo.User">
+	update t_user
+	<set>
+				<if test="id != null">
+					id = #{id},
+				</if>
+				<if test="mobile != null and mobile != '' ">
+					mobile = #{mobile},
+				</if>
+				<if test="password != null and password != '' ">
+					password = #{password},
+				</if>
+				<if test="deviceToken != null and deviceToken != '' ">
+					device_token = #{deviceToken},
+				</if>
+				<if test="type != null">
+					type = #{type},
+				</if>
+				<if test="name != null and name != '' ">
+					name = #{name},
+				</if>
+				<if test="nickName != null and nickName != '' ">
+					nick_name = #{nickName},
+				</if>
+				<if test="age != null and age != '' ">
+					age = #{age},
+				</if>
+				<if test="birthday != null">
+					birthday = #{birthday},
+				</if>
+				<if test="sex != null and sex != '' ">
+					sex = #{sex},
+				</if>
+				<if test="avatar != null and avatar != '' ">
+					avatar = #{avatar},
+				</if>
+				<if test="email != null and email != '' ">
+					email = #{email},
+				</if>
+				<if test="zhCn != null and zhCn != '' ">
+					zh_cn = #{zhCn},
+				</if>
+				<if test="pushToken != null and pushToken != '' ">
+					push_token = #{pushToken},
+				</if>
+				<if test="createTime != null">
+					create_time = #{createTime},
+				</if>
+				<if test="updateTime != null">
+					update_time = #{updateTime},
+				</if>
+				<if test="delFlag != null and delFlag != '' ">
+					del_flag = #{delFlag},
+				</if>
+		<if test="loginStatus != null and loginStatus != '' ">
+			login_status = #{loginStatus},
+		</if>
+		<if test="token != null and token != '' ">
+			token = #{token},
+		</if>
+	</set>
+	<include refid="Base_where"/>
+</update>
+
+<update id="delete">
+	update t_user
+	set del_flag = '1' where id = #{id}
+</update>
+
+</mapper>
