@@ -1,11 +1,9 @@
 package com.xyz.demo.controller;
 
+import com.xyz.demo.enums.ErrorType;
 import com.xyz.demo.exceptions.ServiceException;
 import com.xyz.demo.pojo.User;
-import com.xyz.demo.req.ReqGetVerifyCode;
-import com.xyz.demo.req.ReqLogout;
-import com.xyz.demo.req.ReqLogin;
-import com.xyz.demo.req.ReqRegist;
+import com.xyz.demo.req.*;
 import com.xyz.demo.rtn.RtnLogin;
 import com.xyz.demo.rtn.RtnMessage;
 import com.xyz.demo.rtn.RtnUser;
@@ -17,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -28,6 +27,8 @@ public class UserController {
     private Logger logger = LoggerFactory.getLogger(UserController.class);
     @Resource
     private UserService userService;
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
 
     @PostMapping("regist")
     @ApiOperation("用户注册接口")
@@ -124,6 +125,26 @@ public class UserController {
             return RtnMessageUtils.buildFailed("参数有误");
         }
         logger.info("给手机号" + param.getMobile() + "发送验证码：123456");
+        return RtnMessageUtils.buildSuccess(true);
+    }
+
+    @PostMapping("checkVerifyCode")
+    @ApiOperation("确认验证码接口")
+    public RtnMessage<Boolean> checkVerifyCode(@RequestBody ReqCheckVerifyCode param) {
+        if(StringUtils.isBlank(param.getMobile())){
+            return RtnMessageUtils.buildFailed("参数有误");
+        }
+        logger.info("给手机号" + param.getMobile() + "发送验证码：123456");
+        return RtnMessageUtils.buildSuccess(true);
+    }
+
+
+    @PostMapping("modifyPass")
+    @ApiOperation("修改密码")
+    public RtnMessage<Boolean> modifyPass(@RequestBody ReqModifyPass param){
+        if(StringUtils.isBlank(param.getCode()) || StringUtils.isBlank(param.getPassword())){
+            return RtnMessageUtils.buildError(ErrorType.PARA_ERROR);
+        }
         return RtnMessageUtils.buildSuccess(true);
     }
 

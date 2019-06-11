@@ -106,9 +106,10 @@ public class UserServiceImpl extends CrudNormalService<User, UserDao> implements
         User user = this.get(id);
         if(user != null && StringUtils.equals(user.getToken(),token)){
             //正常退出
-            user.setToken("");
-            user.setLoginStatus("0");
-            //写入
+            dao.logout(user);
+
+        }else{
+            throw new ServiceException("信息有误,退出异常");
         }
         return Boolean.TRUE;
     }

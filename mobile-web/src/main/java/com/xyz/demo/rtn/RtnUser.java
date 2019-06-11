@@ -14,9 +14,9 @@ public class RtnUser {
     @ApiModelProperty("用户id")
     private Integer id;
     @ApiModelProperty("生成时间")
-    private String createTime;
+    private Date createTime;
     @ApiModelProperty("更新时间")
-    private String updateTime;
+    private Date updateTime;
     @ApiModelProperty("手机号")
     private String mobile;
     @ApiModelProperty("设备id")

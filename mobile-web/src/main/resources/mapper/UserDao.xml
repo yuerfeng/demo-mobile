@@ -234,4 +234,10 @@ values (
 	set del_flag = '1' where id = #{id}
 </update>
 
+	<update id="logout">
+		update t_user
+		set token = null,login_status = '0'
+		where id = #{id}
+	</update>
+
 </mapper>
