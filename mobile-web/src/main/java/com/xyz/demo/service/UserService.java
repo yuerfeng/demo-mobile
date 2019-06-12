@@ -14,4 +14,5 @@ public interface UserService extends ICrudNormalService<User, UserDao> {
     User login(String mobile,String password)  throws Exception;
     User loginByVerifyCode(String mobile,String code)  throws Exception;
     Boolean logout(Integer id,String token) throws Exception;
+    Boolean updateByMobile(String mobile,User user);
 }

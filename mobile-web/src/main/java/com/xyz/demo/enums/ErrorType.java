@@ -49,7 +49,9 @@ public enum ErrorType {
 
     NOT_FOUND_CONTRACT("10009","加盟商特许经营合同没有录入"),
 
-    NOT_AUDIT_CONTRACT("10009","加盟商特许经营合同没有审批完!"),;
+    NOT_AUDIT_CONTRACT("10009","加盟商特许经营合同没有审批完!"),
+    VERIFY_CODE_ERROR("10010","验证码错误!"),
+    OPERATOR_CODE_ERROR("10011","操作码错误!"),;
 
 
     private String errorCode;

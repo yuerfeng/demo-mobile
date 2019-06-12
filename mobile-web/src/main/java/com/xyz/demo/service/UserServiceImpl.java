@@ -88,12 +88,9 @@ public class UserServiceImpl extends CrudNormalService<User, UserDao> implements
         if(user == null){
             logger.error("该手机未注册");
             throw new ServiceException("该手机未注册") ;
-        }else if(!StringUtils.equals("111111",code)){
-            logger.error("验证码错误");
-            throw new ServiceException("验证码错误") ;
         }
 
-        String token = IdGenUtils.uuid();
+        String token = JwtHelper.createTokenById(Long.valueOf(user.getId()));
         user.setToken(token);
         user.setLoginStatus("1");
         this.save(user);
@@ -112,5 +109,23 @@ public class UserServiceImpl extends CrudNormalService<User, UserDao> implements
             throw new ServiceException("信息有误,退出异常");
         }
         return Boolean.TRUE;
+    }
+
+    @Override
+    public Boolean updateByMobile(String mobile,User user) {
+        User entity = new User();
+        if(entity != null){
+            BeanUtils.copyProperties(user,entity);
+            super.save(entity);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean save(User entity) {
+        entity.setDelFlag("0");
+        super.save(entity);
+        return true;
     }
 }

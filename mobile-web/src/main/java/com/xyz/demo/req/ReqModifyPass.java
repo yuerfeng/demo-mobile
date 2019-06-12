@@ -11,4 +11,6 @@ public class ReqModifyPass {
     private String code;
     @ApiModelProperty("新密码")
     private String password;
+    @ApiModelProperty("手机号")
+    private String mobile;
 }

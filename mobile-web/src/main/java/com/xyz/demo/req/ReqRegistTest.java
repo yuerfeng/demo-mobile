@@ -5,12 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-@ApiModel("登录请求参数")
-public class ReqLogin {
+@ApiModel("是否能注册接口参数")
+public class ReqRegistTest {
     @ApiModelProperty("手机号")
     private String mobile;
-    @ApiModelProperty("密码")
-    private String password;
-    @ApiModelProperty("短信验证码")
-    private String verifyCode;
 }
