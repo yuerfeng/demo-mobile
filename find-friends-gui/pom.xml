@@ -8,8 +8,8 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>mobile-gui</artifactId>
-    <name>mobile-gui</name>
+    <artifactId>find-friends-gui</artifactId>
+    <name>find-friends-gui</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -37,7 +37,7 @@
         </dependency>
         <dependency>
             <groupId>com.xyz</groupId>
-            <artifactId>mobile-sdk</artifactId>
+            <artifactId>mobile-im-sdk</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.jdesktop/swing-worker -->

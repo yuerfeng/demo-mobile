@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>mobile-sdk</module>
-        <module>mobile-web</module>
-        <module>mobile-gui</module>
+        <module>mobile-im-sdk</module>
+        <module>find-friends-web</module>
+        <module>find-friends-gui</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

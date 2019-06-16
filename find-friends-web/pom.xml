@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.xyz</groupId>
-    <artifactId>mobile-web</artifactId>
+    <artifactId>find-friends-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mobile-web</name>
+    <name>find-friends-web</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -110,7 +110,7 @@
 
         <dependency>
             <groupId>com.xyz</groupId>
-            <artifactId>mobile-sdk</artifactId>
+            <artifactId>mobile-im-sdk</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
