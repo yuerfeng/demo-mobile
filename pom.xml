@@ -16,9 +16,9 @@
     </parent>
 
     <groupId>com.xyz</groupId>
-    <artifactId>demo-mobile</artifactId>
+    <artifactId>find-friends</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo-mobile</name>
+    <name>find-friends</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
